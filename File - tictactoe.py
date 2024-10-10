@@ -1,38 +1,41 @@
 import math
 
-# Initialize the game board
 board = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']
 ]
 
-# Check for a win
+
 def check_winner(board):
     # Rows
     for row in board:
         if row[0] == row[1] == row[2] and row[0] != '':
             return row[0]
     
-    # Columns
+    
     for col in range(3):
         if board[0][col] == board[1][col] == board[2][col] and board[0][col] != '':
             return board[0][col]
     
-    # Diagonals
+
     if board[0][0] == board[1][1] == board[2][2] and board[0][0] != '':
         return board[0][0]
     if board[0][2] == board[1][1] == board[2][0] and board[0][2] != '':
         return board[0][2]
     
-    # Check if the board is full (Draw)
+    
     for row in board:
         if '' in row:
             return None
     
     return 'Draw'
 
-# Minimax function
+
+
+
+
+
 def minimax(board, depth, is_maximizing):
     winner = check_winner(board)
     if winner == 'X':
@@ -63,7 +66,7 @@ def minimax(board, depth, is_maximizing):
                     best_score = min(score, best_score)
         return best_score
 
-# Best move function
+
 def best_move(board):
     best_score = -math.inf
     move = None
@@ -78,12 +81,12 @@ def best_move(board):
                     move = (i, j)
     return move
 
-# Example usage
+
 def print_board(board):
     for row in board:
         print(row)
 
-# Example move
+
 board[0][0] = 'X'
 board[1][1] = 'O'
 board[2][2] = 'X'
